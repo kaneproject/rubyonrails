@@ -1,0 +1,269 @@
+= Ruby On Rails
+=============
+:Author:	Rubén Gómez García
+:Date:		Marzo, 2015 date
+:Revision:	0.1 version
+:backend: deckjs
+:deckjs_theme: web-2.0
+:deckjs_transition: horizontal-slide
+:imagesdir: images
+:blank:
+:goto:
+:menu:
+:navigation:
+:status:
+:split:
+:source-highlighter: pygments
+:pygments-style: monokai
+:pygments-linenums-mode: inline
+:toc:
+
+:t1: Introducción
+:t2: Características principales de Ruby
+:t3: Características principales de Ruby On Rails
+:t4: Características principales de Ajax
+:t5: MVC Modelo, Vista y Controlador
+:t6: Instalaciones
+:t7: Configuraciones
+:t8: Las gemas de Ruby
+:t9: Mi primera aplicación con RoR
+:t10: Pruebas unitarias
+:t11: Más cosas interesantes
+:t12: Las Vistas
+:t13: Los Modelos
+:t14: Los Controladores
+:t15: Las Rutas
+:t16: Miscelánea
+
+image:ror-principal.jpg[RubyOnRails,100,float="right"]
+
+== Tabla de contenidos
+
+
+.Indice
+. {t1}
+. {t2}
+. {t3}
+. {t4}
+. {t5}
+. {t6}
+. {t7}
+. {t8}
+. {t9}
+
+<<<
+
+.Indice
+[start=10]
+. {t10}
+. {t11}
+. {t12}
+. {t13}
+. {t14}
+. {t15}
+. {t16}
+
+== {counter:contador} - {t1}
+
+* Ruby on Rails (o solo Rails) es un framework de desarrollo web escrito en lenguaje Ruby
+* Desde 2004, se ha convertido en una de las herramientas más potentes y populares para construir páginas dinámicas
+* Rails es utilizado por compañias como Airbnb, Basecamp, Disney, GitHub, Hulu, Kickstarter, Shopify, Twitter y YellowPages
+
+<<<
+
+* Ruby on Rails es 100% open-source, disponible bajo la licencia MIT. No hay coste por descarga o uso.
+* Posee un diseño compacto y elegante, explotando el lenguaje Ruby.
+* Genera un lenguaje de dominio específico para escribir aplicaciones web.
+
+<<<
+
+* Rails se adapta a nuevas tecnologías rápidamente.
+* Uno de los primeros frameworks que implementa una arquitectura REST para estructurar la aplicación web
+* Rails se beneficia de una potente y diversa comunidad
+* Cientos de contribuidores open-source, una cantidad ingente de gemas (soluciones modulares a problemas específicos, como paginación o subiada de imágenes)
+* Facilidad para encontrar soluciones debido al alto número de desarrolladores de Rails.
+
+
+== {counter:contador} - {t2}
+
+* Ruby es un lenguaje de programaación interpretado, reflexivo y orientado a objetos.
+* Creado por el programador japonés *Yukihiro "Matz" Matsumoto* que comenzó a trabajar con Ruby en 1993 y lo presentó públicamente en 1995
+* Sintaxis inspirada en Python y Perl con Smalltalk
+* Comparte funcionalidades con otros lenguajes de programación como Lisp, Lua, Dylan o CLU.
+* Interpretado en una sola pasada y distribuida bajo licencia de software libre.
+
+<<<
+
+* Está orientado a objetos
+* Cuatro niveles de ámbito de variable: global, clase, instancia y local
+* Manejo de excepciones
+* Iteradores y clausuras
+* Expresiones regulares
+* Posibilidad de redefinir los operadores (Sobrecarga de operadores)
+* Recolector automático de basura
+* Altamente portable
+* Hilos de ejecución simultáneos en todas las plataformas usando green threads
+* Carga dinámica de biblliotecas compartidas en la mayoría de las plataformas
+* Introspección, reflexión y metaprogramación
+* Ámplia librería estándar
+* Soporte de inyección de dependencias
+* Soporte de alteración de objetos en tiempo de ejecución
+* Continuaciónes y generadores.
+
+<<<
+
+
+
+
+== {counter:contador} - {t3}
+== {counter:contador} - {t4}
+== {counter:contador} - {t5}
+== {counter:contador} - {t6}
+== {counter:contador} - {t7}
+== {counter:contador} - {t8}
+
+
+
+
+
+
+
+
+
+== {counter:contador} - {t9}
+
+* Para iniciar nuestra aplicación, debemos elegir un ide de desarrollo. Hay tantos IDE's casi como desarrolladores.
+* Podemos usar Aptana Studio o Cloud9 como entornos de desarrollo, el primero local y el segundo en la nube
+* Entrando en Aptana Studio creamos un nuevo proyecto Rails llamado *ejemplo01-railsbase*
+
+<<<
+
+* Al terminar, comenzará la construcción del proyecto Rails
+* Se puede construir de forma manual:
+
+[source,ruby,linenums]
+----
+# El nombre del proyecto no puede ser una palabra reservada.
+$ rails new <nombre_del_proyecto>
+----
+
+* En este proceso se llaman a las gemas necesarias para construir el proyecto.
+
+<<<
+
+* Los directorios creados son los siguientes
+** app - Núcleo de la aplicación, incluye modelso vistas, controladores y helpers
+** app/assets - css, javascript, ficheros e imágenes
+** bin - Ficheros binarios ejecutables
+** bin/rails Programa para generar código, abrir sesiones de consola o iniciar un servidor local
+** config - Configuración de la aplicación
+** db - Ficheros de base de datos
+** doc - Documentación de la aplicación
+** lib - modulos de librerias
+** lib/assets css, javascript, ficheros e imágenes para librerias
+** log - ficheros de log de la aplicación
+
+<<<
+
+** public - Información accesible al público, como páginas estáticas o de error.
+** test - Pruebas de la aplicación
+** tmp - Ficheros temporales
+** vendor - Código de terceros como gemas o plugins
+** vendor/assets css, javascript, ficheros e imágenes para vendors
+** README.rdoc - Descripción básica de la aplicación
+** Rakefile - Tareas disponibles a través de la utilidad Rake
+** Gemfile - Requerimientos de gemas para esta aplicación
+** Gemfile.lock - Lista de gemas utilizadas para asegurarse que todas las copias de la app usan la misma versión de gemas
+** config.ru - Fichero para configuración de middleware Rack
+** .gitignore - Patrones de ficheros a ignorar por git
+
+== {contador}.{counter:contadort9} - {t9x1}
+
+* Tras crear la nueva aplicación Rails, lo siguiente que debemos hacer es envolver la aplicación instalador las gemas necesarias para la aplicación
+* Este proceso es automático en el Aptana Studio, en la consola, debemos ejecutar el siguiente comando desde el directorio del proyecto
+
+[source,ruby,linenums]
+----
+$ bundle install
+----
+
+<<<
+
+* Bundler utiliza el fichero de configuración Gemfile
+
+[source,ruby, linenums]
+----
+include:source/Gemfile_base
+----
+
+<<<
+
+* Muchas de las líneas están comentadas con el símbolo #
+* Si la gema no posee versión, se instalará la última versión definida
+
+[source,ruby,linenums]
+----
+# instala la última versión de sqlite3
+gem 'sqlite3'
+# instala la última versión de uglifier que gestiona la compresión de ficheros
+# mientras sea una versión igual o superior a la indicada
+gem 'uglifier', '>= 1.3.0'
+# Instala coffee-rails versión 4.0.*, la última versión, pero nunca la 4.1
+gem 'coffee-rails', '~> 4.0.0'
+----
+
+* En Ruby no podemos fiarnos de versiones menores, algunas versiones menores pueden producir errores, por eso se suele utilizar una versión concreta.
+
+
+== {counter:contador} - {t13}
+
+:t13x1: ActiveRecords
+:t13x2: Consola Rails
+
+. {t13x1}
+. {t13x2}
+
+== {contador}.{counter:contadort13} {t13x1}
+
+* Active Record es la librería ORM que gestiona la abstracción de base de datos y su interacción con Rails.
+* Active Record mapea las clases en tablas, y los objetos en filas de la tabla, y las columnas en atributos de la clase. A esto se le llama comunmente ORM
+* No es necesaria configuración para mapear clases a tablas. Solo necesitamos una clase Ruby que extienda a la clase ActiveRecord
+
+[source, ruby, linenums]
+----
+class Cliente < ActiveRecord::Base
+end
+----
+
+* La clase __Cliente__ es una subclase de ActiveRecord.
+* Existe una gran cantidad de código en la clase ActiveRecord::Base, y al heredar de ella, la clase __Cliente__ puede acceder a todas las funcionalidades de ActiveRecord.
+
+<<<
+
+* Podemos trabajar con la clase cliente y el ORM se encarga del proceso de gestión en base de datos
+
+[source, ruby, linenums]
+----
+cliente = Cliente.new
+cliente.nombre = "Rubén López Serrano"
+cliente.fecha_nacimiento = "1971-12-21"
+cliente.save
+----
+
+* En este proceso, el cliente se ha almacenado en la base de datos, en la tabla clientes como una nueva fila
+* ActiveRecord es agnóstico a la base de datos, no importa que software de base de datos utilices, y prácticamente soporta cualquier base de datos existente.
+* No es necesario conocer ni manipular la base de datos. Cada base de datos posee su propio lenguaje, y el ORM realiza esa pesada tarea por nosotros.
+
+[NOTE]
+----
+ActiveRecord está basado en un patrón de diseño.
+Son soluciones estándar a problemas comunes de diseño de software
+----
+
+* ActiveRecord permite modelar el mundo real con código. A ese código modelado se le llama Modelo (la M de MVC)
+* Cada modelo es implementado como una clase Ruby y almacenado en el directorio app/models.
+
+[NOTE]
+----
+ActiveRecord abstrae del uso de SQL para evitar el acoplamiento con una base de datos concreta. Sin embargo, permite también ejecutar SQL diréctamente en el lenguaje nativo de la base de datos.
+----
