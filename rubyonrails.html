@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="Asciidoctor 1.5.2" name="generator">
+<meta content="Rubén Gómez García" name="author">
+<title>Ruby On Rails</title>
+<style>
+.listingblock .pygments .hll { background-color: #49483e }
+.listingblock .pygments  { background: #272822; color: #f8f8f2 }
+.listingblock .pygments .tok-c { color: #75715e } /* Comment */
+.listingblock .pygments .tok-err { color: #960050; background-color: #1e0010 } /* Error */
+.listingblock .pygments .tok-k { color: #66d9ef } /* Keyword */
+.listingblock .pygments .tok-l { color: #ae81ff } /* Literal */
+.listingblock .pygments .tok-n { color: #f8f8f2 } /* Name */
+.listingblock .pygments .tok-o { color: #f92672 } /* Operator */
+.listingblock .pygments .tok-p { color: #f8f8f2 } /* Punctuation */
+.listingblock .pygments .tok-cm { color: #75715e } /* Comment.Multiline */
+.listingblock .pygments .tok-cp { color: #75715e } /* Comment.Preproc */
+.listingblock .pygments .tok-c1 { color: #75715e } /* Comment.Single */
+.listingblock .pygments .tok-cs { color: #75715e } /* Comment.Special */
+.listingblock .pygments .tok-gd { color: #f92672 } /* Generic.Deleted */
+.listingblock .pygments .tok-ge { font-style: italic } /* Generic.Emph */
+.listingblock .pygments .tok-gi { color: #a6e22e } /* Generic.Inserted */
+.listingblock .pygments .tok-gs { font-weight: bold } /* Generic.Strong */
+.listingblock .pygments .tok-gu { color: #75715e } /* Generic.Subheading */
+.listingblock .pygments .tok-kc { color: #66d9ef } /* Keyword.Constant */
+.listingblock .pygments .tok-kd { color: #66d9ef } /* Keyword.Declaration */
+.listingblock .pygments .tok-kn { color: #f92672 } /* Keyword.Namespace */
+.listingblock .pygments .tok-kp { color: #66d9ef } /* Keyword.Pseudo */
+.listingblock .pygments .tok-kr { color: #66d9ef } /* Keyword.Reserved */
+.listingblock .pygments .tok-kt { color: #66d9ef } /* Keyword.Type */
+.listingblock .pygments .tok-ld { color: #e6db74 } /* Literal.Date */
+.listingblock .pygments .tok-m { color: #ae81ff } /* Literal.Number */
+.listingblock .pygments .tok-s { color: #e6db74 } /* Literal.String */
+.listingblock .pygments .tok-na { color: #a6e22e } /* Name.Attribute */
+.listingblock .pygments .tok-nb { color: #f8f8f2 } /* Name.Builtin */
+.listingblock .pygments .tok-nc { color: #a6e22e } /* Name.Class */
+.listingblock .pygments .tok-no { color: #66d9ef } /* Name.Constant */
+.listingblock .pygments .tok-nd { color: #a6e22e } /* Name.Decorator */
+.listingblock .pygments .tok-ni { color: #f8f8f2 } /* Name.Entity */
+.listingblock .pygments .tok-ne { color: #a6e22e } /* Name.Exception */
+.listingblock .pygments .tok-nf { color: #a6e22e } /* Name.Function */
+.listingblock .pygments .tok-nl { color: #f8f8f2 } /* Name.Label */
+.listingblock .pygments .tok-nn { color: #f8f8f2 } /* Name.Namespace */
+.listingblock .pygments .tok-nx { color: #a6e22e } /* Name.Other */
+.listingblock .pygments .tok-py { color: #f8f8f2 } /* Name.Property */
+.listingblock .pygments .tok-nt { color: #f92672 } /* Name.Tag */
+.listingblock .pygments .tok-nv { color: #f8f8f2 } /* Name.Variable */
+.listingblock .pygments .tok-ow { color: #f92672 } /* Operator.Word */
+.listingblock .pygments .tok-w { color: #f8f8f2 } /* Text.Whitespace */
+.listingblock .pygments .tok-mb { color: #ae81ff } /* Literal.Number.Bin */
+.listingblock .pygments .tok-mf { color: #ae81ff } /* Literal.Number.Float */
+.listingblock .pygments .tok-mh { color: #ae81ff } /* Literal.Number.Hex */
+.listingblock .pygments .tok-mi { color: #ae81ff } /* Literal.Number.Integer */
+.listingblock .pygments .tok-mo { color: #ae81ff } /* Literal.Number.Oct */
+.listingblock .pygments .tok-sb { color: #e6db74 } /* Literal.String.Backtick */
+.listingblock .pygments .tok-sc { color: #e6db74 } /* Literal.String.Char */
+.listingblock .pygments .tok-sd { color: #e6db74 } /* Literal.String.Doc */
+.listingblock .pygments .tok-s2 { color: #e6db74 } /* Literal.String.Double */
+.listingblock .pygments .tok-se { color: #ae81ff } /* Literal.String.Escape */
+.listingblock .pygments .tok-sh { color: #e6db74 } /* Literal.String.Heredoc */
+.listingblock .pygments .tok-si { color: #e6db74 } /* Literal.String.Interpol */
+.listingblock .pygments .tok-sx { color: #e6db74 } /* Literal.String.Other */
+.listingblock .pygments .tok-sr { color: #e6db74 } /* Literal.String.Regex */
+.listingblock .pygments .tok-s1 { color: #e6db74 } /* Literal.String.Single */
+.listingblock .pygments .tok-ss { color: #e6db74 } /* Literal.String.Symbol */
+.listingblock .pygments .tok-bp { color: #f8f8f2 } /* Name.Builtin.Pseudo */
+.listingblock .pygments .tok-vc { color: #f8f8f2 } /* Name.Variable.Class */
+.listingblock .pygments .tok-vg { color: #f8f8f2 } /* Name.Variable.Global */
+.listingblock .pygments .tok-vi { color: #f8f8f2 } /* Name.Variable.Instance */
+.listingblock .pygments .tok-il { color: #ae81ff } /* Literal.Number.Integer.Long */
+</style>
+<link href="deck.js/core/deck.core.css" rel="stylesheet">
+<link href="deck.js/extensions/scale/deck.scale.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/goto/deck.goto.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/menu/deck.menu.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/navigation/deck.navigation.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/status/deck.status.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/toc/deck.toc.css" media="screen" rel="stylesheet">
+<link href="deck.js/themes/style/web-2.0.css" media="screen" rel="stylesheet">
+<link href="deck.js/themes/transition/horizontal-slide.css" media="screen" rel="stylesheet">
+<link href="deck.js/core/print.css" media="print" rel="stylesheet">
+<script src="deck.js/modernizr.custom.js"></script>
+</head>
+<body class="article">
+<div class="deck-container">
+<section class="slide" id="title-slide">
+<h1>Ruby On Rails</h1>
+<span id="author">Rubén Gómez García</span>
+<br>
+</section>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p><span class="image" style="float: right"><img alt="RubyOnRails" src="images/ror-principal.png" width="150"></span></p></div>
+</div>
+</div>
+<section class="slide" id="_tabla_de_contenidos">
+<h2>Tabla de contenidos</h2>
+<div class="olist arabic">
+<div class="title">Indice</div>
+<ol class="arabic">
+<li>
+Introducción
+</li>
+<li>
+Características principales de Ruby
+</li>
+<li>
+Características principales de Ruby On Rails
+</li>
+<li>
+Características principales de Ajax
+</li>
+<li>
+MVC Modelo, Vista y Controlador
+</li>
+<li>
+Instalaciones
+</li>
+<li>
+Configuraciones
+</li>
+<li>
+Las gemas de Ruby
+</li>
+<li>
+Mi primera aplicación con RoR
+</li>
+</ol>
+</div>
+<div style="page-break-after: always"></div>
+<div class="olist arabic">
+<div class="title">Indice</div>
+<ol class="arabic" start="10">
+<li>
+Pruebas unitarias
+</li>
+<li>
+Más cosas interesantes
+</li>
+<li>
+Las Vistas
+</li>
+<li>
+Los Modelos
+</li>
+<li>
+Los Controladores
+</li>
+<li>
+Las Rutas
+</li>
+<li>
+Miscelánea
+</li>
+</ol>
+</div>
+</section>
+<section class="slide" id="_1_introducción">
+<h2>1 - Introducción</h2>
+<div class="ulist">
+<ul>
+<li>Ruby on Rails (o solo Rails) es un framework de desarrollo web escrito en lenguaje Ruby</li>
+<li>Desde 2004, se ha convertido en una de las herramientas más potentes y populares para construir páginas dinámicas</li>
+<li>Rails es utilizado por compañias como Airbnb, Basecamp, Disney, GitHub, Hulu, Kickstarter, Shopify, Twitter y YellowPages</li>
+</ul>
+</div>
+<div style="page-break-after: always"></div>
+<div class="ulist">
+<ul>
+<li>Ruby on Rails es 100% open-source, disponible bajo la licencia MIT. No hay coste por descarga o uso.</li>
+<li>Posee un diseño compacto y elegante, explotando el lenguaje Ruby.</li>
+<li>Genera un lenguaje de dominio específico para escribir aplicaciones web.</li>
+</ul>
+</div>
+<div style="page-break-after: always"></div>
+<div class="ulist">
+<ul>
+<li>Rails se adapta a nuevas tecnologías rápidamente.</li>
+<li>Uno de los primeros frameworks que implementa una arquitectura REST para estructurar la aplicación web</li>
+<li>Rails se beneficia de una potente y diversa comunidad</li>
+<li>Cientos de contribuidores open-source, una cantidad ingente de gemas (soluciones modulares a problemas específicos, como paginación o subiada de imágenes)</li>
+<li>Facilidad para encontrar soluciones debido al alto número de desarrolladores de Rails.</li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_2_características_principales_de_ruby">
+<h2>2 - Características principales de Ruby</h2>
+<div class="ulist">
+<ul>
+<li>Ruby es un lenguaje de programaación interpretado, reflexivo y orientado a objetos.</li>
+<li>Creado por el programador japonés <strong>Yukihiro "Matz" Matsumoto</strong> que comenzó a trabajar con Ruby en 1993 y lo presentó públicamente en 1995</li>
+<li>Sintaxis inspirada en Python y Perl con Smalltalk</li>
+<li>Comparte funcionalidades con otros lenguajes de programación como Lisp, Lua, Dylan o CLU.</li>
+<li>Interpretado en una sola pasada y distribuida bajo licencia de software libre.</li>
+</ul>
+</div>
+<div style="page-break-after: always"></div>
+<div class="ulist">
+<ul>
+<li>Está orientado a objetos</li>
+<li>Cuatro niveles de ámbito de variable: global, clase, instancia y local</li>
+<li>Manejo de excepciones</li>
+<li>Iteradores y clausuras</li>
+<li>Expresiones regulares</li>
+<li>Posibilidad de redefinir los operadores (Sobrecarga de operadores)</li>
+<li>Recolector automático de basura</li>
+<li>Altamente portable</li>
+<li>Hilos de ejecución simultáneos en todas las plataformas usando green threads</li>
+<li>Carga dinámica de biblliotecas compartidas en la mayoría de las plataformas</li>
+<li>Introspección, reflexión y metaprogramación</li>
+<li>Ámplia librería estándar</li>
+<li>Soporte de inyección de dependencias</li>
+<li>Soporte de alteración de objetos en tiempo de ejecución</li>
+<li>Continuaciónes y generadores.</li>
+</ul>
+</div>
+<div style="page-break-after: always"></div>
+</section>
+<section class="slide" id="_3_características_principales_de_ruby_on_rails">
+<h2>3 - Características principales de Ruby On Rails</h2>
+
+</section>
+<section class="slide" id="_4_características_principales_de_ajax">
+<h2>4 - Características principales de Ajax</h2>
+
+</section>
+<section class="slide" id="_5_mvc_modelo_vista_y_controlador">
+<h2>5 - MVC Modelo, Vista y Controlador</h2>
+
+</section>
+<section class="slide" id="_6_instalaciones">
+<h2>6 - Instalaciones</h2>
+
+</section>
+<section class="slide" id="_7_configuraciones">
+<h2>7 - Configuraciones</h2>
+
+</section>
+<section class="slide" id="_8_las_gemas_de_ruby">
+<h2>8 - Las gemas de Ruby</h2>
+
+</section>
+<section class="slide" id="_9_mi_primera_aplicación_con_ror">
+<h2>9 - Mi primera aplicación con RoR</h2>
+<div class="ulist">
+<ul>
+<li>Para iniciar nuestra aplicación, debemos elegir un ide de desarrollo. Hay tantos IDE&#8217;s casi como desarrolladores.</li>
+<li>Podemos usar Aptana Studio o Cloud9 como entornos de desarrollo, el primero local y el segundo en la nube</li>
+<li>Entrando en Aptana Studio creamos un nuevo proyecto Rails llamado <strong>ejemplo01-railsbase</strong></li>
+</ul>
+</div>
+<div style="page-break-after: always"></div>
+<div class="ulist">
+<ul>
+<li>Al terminar, comenzará la construcción del proyecto Rails</li>
+<li>Se puede construir de forma manual:</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code class="ruby language-ruby"><span class="lineno">1</span> <span class="tok-c1"># El nombre del proyecto no puede ser una palabra reservada.</span>
+<span class="lineno">2</span> <span class="tok-err">$</span> <span class="tok-n">rails</span> <span class="tok-kp">new</span> <span class="tok-o">&lt;</span><span class="tok-n">nombre_del_proyecto</span><span class="tok-o">&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>En este proceso se llaman a las gemas necesarias para construir el proyecto.</li>
+</ul>
+</div>
+<div style="page-break-after: always"></div>
+<div class="ulist">
+<ul>
+<li><p>
+Los directorios creados son los siguientes<div class="ulist">
+<ul>
+<li>app - Núcleo de la aplicación, incluye modelso vistas, controladores y helpers</li>
+<li>app/assets - css, javascript, ficheros e imágenes</li>
+<li>bin - Ficheros binarios ejecutables</li>
+<li>bin/rails Programa para generar código, abrir sesiones de consola o iniciar un servidor local</li>
+<li>config - Configuración de la aplicación</li>
+<li>db - Ficheros de base de datos</li>
+<li>doc - Documentación de la aplicación</li>
+<li>lib - modulos de librerias</li>
+<li>lib/assets css, javascript, ficheros e imágenes para librerias</li>
+<li>log - ficheros de log de la aplicación</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+<div style="page-break-after: always"></div>
+<div class="ulist">
+<ul>
+<li>public - Información accesible al público, como páginas estáticas o de error.</li>
+<li>test - Pruebas de la aplicación</li>
+<li>tmp - Ficheros temporales</li>
+<li>vendor - Código de terceros como gemas o plugins</li>
+<li>vendor/assets css, javascript, ficheros e imágenes para vendors</li>
+<li>README.rdoc - Descripción básica de la aplicación</li>
+<li>Rakefile - Tareas disponibles a través de la utilidad Rake</li>
+<li>Gemfile - Requerimientos de gemas para esta aplicación</li>
+<li>Gemfile.lock - Lista de gemas utilizadas para asegurarse que todas las copias de la app usan la misma versión de gemas</li>
+<li>config.ru - Fichero para configuración de middleware Rack</li>
+<li>.gitignore - Patrones de ficheros a ignorar por git</li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_9_1_t9x1">
+<h2>9.1 - {t9x1}</h2>
+<div class="ulist">
+<ul>
+<li>Tras crear la nueva aplicación Rails, lo siguiente que debemos hacer es envolver la aplicación instalador las gemas necesarias para la aplicación</li>
+<li>Este proceso es automático en el Aptana Studio, en la consola, debemos ejecutar el siguiente comando desde el directorio del proyecto</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code class="ruby language-ruby"><span class="lineno">1</span> <span class="tok-err">$</span> <span class="tok-n">bundle</span> <span class="tok-n">install</span></code></pre>
+</div>
+</div>
+<div style="page-break-after: always"></div>
+<div class="ulist">
+<ul>
+<li>Bundler utiliza el fichero de configuración Gemfile</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code class="ruby language-ruby"><span class="lineno">1</span> <span class="tok-kp">include</span><span class="tok-ss">:source</span><span class="tok-o">/</span><span class="tok-no">Gemfile_base</span></code></pre>
+</div>
+</div>
+<div style="page-break-after: always"></div>
+<div class="ulist">
+<ul>
+<li>Muchas de las líneas están comentadas con el símbolo #</li>
+<li>Si la gema no posee versión, se instalará la última versión definida</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code class="ruby language-ruby"><span class="lineno">1</span> <span class="tok-c1"># instala la última versión de sqlite3</span>
+<span class="lineno">2</span> <span class="tok-n">gem</span> <span class="tok-s1">&#39;sqlite3&#39;</span>
+<span class="lineno">3</span> <span class="tok-c1"># instala la última versión de uglifier que gestiona la compresión de ficheros</span>
+<span class="lineno">4</span> <span class="tok-c1"># mientras sea una versión igual o superior a la indicada</span>
+<span class="lineno">5</span> <span class="tok-n">gem</span> <span class="tok-s1">&#39;uglifier&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;&gt;= 1.3.0&#39;</span>
+<span class="lineno">6</span> <span class="tok-c1"># Instala coffee-rails versión 4.0.*, la última versión, pero nunca la 4.1</span>
+<span class="lineno">7</span> <span class="tok-n">gem</span> <span class="tok-s1">&#39;coffee-rails&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;~&gt; 4.0.0&#39;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>En Ruby no podemos fiarnos de versiones menores, algunas versiones menores pueden producir errores, por eso se suele utilizar una versión concreta.</li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_10_los_modelos">
+<h2>10 - Los Modelos</h2>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+ActiveRecords
+</li>
+<li>
+Consola Rails
+</li>
+</ol>
+</div>
+</section>
+<section class="slide" id="_10_1_activerecords">
+<h2>10.1 ActiveRecords</h2>
+<div class="ulist">
+<ul>
+<li>Active Record es la librería ORM que gestiona la abstracción de base de datos y su interacción con Rails.</li>
+<li>Active Record mapea las clases en tablas, y los objetos en filas de la tabla, y las columnas en atributos de la clase. A esto se le llama comunmente ORM</li>
+<li>No es necesaria configuración para mapear clases a tablas. Solo necesitamos una clase Ruby que extienda a la clase ActiveRecord</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code class="ruby language-ruby"><span class="lineno">1</span> <span class="tok-k">class</span> <span class="tok-nc">Cliente</span> <span class="tok-o">&lt;</span> <span class="tok-no">ActiveRecord</span><span class="tok-o">::</span><span class="tok-no">Base</span>
+<span class="lineno">2</span> <span class="tok-k">end</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>La clase <em>Cliente</em> es una subclase de ActiveRecord.</li>
+<li>Existe una gran cantidad de código en la clase ActiveRecord::Base, y al heredar de ella, la clase <em>Cliente</em> puede acceder a todas las funcionalidades de ActiveRecord.</li>
+</ul>
+</div>
+<div style="page-break-after: always"></div>
+<div class="ulist">
+<ul>
+<li>Podemos trabajar con la clase cliente y el ORM se encarga del proceso de gestión en base de datos</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code class="ruby language-ruby"><span class="lineno">1</span> <span class="tok-n">cliente</span> <span class="tok-o">=</span> <span class="tok-no">Cliente</span><span class="tok-o">.</span><span class="tok-n">new</span>
+<span class="lineno">2</span> <span class="tok-n">cliente</span><span class="tok-o">.</span><span class="tok-n">nombre</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;Rubén López Serrano&quot;</span>
+<span class="lineno">3</span> <span class="tok-n">cliente</span><span class="tok-o">.</span><span class="tok-n">fecha_nacimiento</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;1971-12-21&quot;</span>
+<span class="lineno">4</span> <span class="tok-n">cliente</span><span class="tok-o">.</span><span class="tok-n">save</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>En este proceso, el cliente se ha almacenado en la base de datos, en la tabla clientes como una nueva fila</li>
+<li>ActiveRecord es agnóstico a la base de datos, no importa que software de base de datos utilices, y prácticamente soporta cualquier base de datos existente.</li>
+<li>No es necesario conocer ni manipular la base de datos. Cada base de datos posee su propio lenguaje, y el ORM realiza esa pesada tarea por nosotros.</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>ActiveRecord está basado en un patrón de diseño.
+Son soluciones estándar a problemas comunes de diseño de software</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>ActiveRecord permite modelar el mundo real con código. A ese código modelado se le llama Modelo (la M de MVC)</li>
+<li>Cada modelo es implementado como una clase Ruby y almacenado en el directorio app/models.</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>ActiveRecord abstrae del uso de SQL para evitar el acoplamiento con una base de datos concreta. Sin embargo, permite también ejecutar SQL diréctamente en el lenguaje nativo de la base de datos.</code></pre>
+</div>
+</div>
+</section>
+<section class="slide" id="_10_2_consola_rails">
+<h2>10.2 Consola Rails</h2>
+<div class="ulist">
+<ul>
+<li>La configuración de ActiveRecord permite</li>
+</ul>
+</div>
+</section>
+<div aria-role="navigation">
+<a class="deck-prev-link" href="#" title="Previous">&#8592;</a>
+<a class="deck-next-link" href="#" title="Next">&#8594;</a>
+</div>
+<p aria-role="status" class="deck-status">
+<span class="deck-status-current"></span>
+/
+<span class="deck-status-total"></span>
+</p>
+<form action="." class="goto-form" method="get">
+<label for="goto-slide">Go to Slide:</label>
+<input id="goto-slide" list="goto-datalist" name="slidenum" type="text">
+<datalist id="goto-data-list"></datalist>
+<input type="submit" value="Go">
+</form>
+</div>
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/blank/deck.blank.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/split/deck.split.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/toc/deck.toc.js"></script>
+<div class="deck-toc"></div>
+<script>
+  (function($, deck, undefined) {
+    $.deck.defaults.keys['previous'] = [8, 33, 37, 39];
+    $.deck.defaults.keys['next'] = [13, 32, 34, 39];
+  
+    $.extend(true, $[deck].defaults, {
+        countNested: false
+    });
+  
+    $.deck('.slide');
+  })(jQuery, 'deck');
+</script>
+<style>
+  .slide.canvas-image {
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: -moz-box;
+  display: -webkit-box;
+  display: -ms-box;
+  display: box;
+  -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -moz-box-align: start;
+  -webkit-box-align: start;
+  -ms-box-align: start;
+  box-align: start;
+  -moz-box-pack: start;
+  -webkit-box-pack: start;
+  -ms-box-pack: start;
+  box-pack: start;}
+  
+  .bottom-left {
+    left: 1%;
+    bottom: 20%; }
+  
+  .top-left {
+    left: 1%;
+    top: 20%; }
+  
+  .bottom-right {
+    right: 1%;
+    bottom: 20%; }
+  
+  .top-right {
+    right: 1%;
+    top: 20%; }
+  
+  .center-up {
+    right: 50%;
+    top: 1%;
+  }
+  
+  .center-down {
+    right: 50%;
+    bottom: 1%;
+  }
+  .canvas-image .canvas-caption p {
+    text-align: center;
+    padding-top: 0;
+    padding: 0;
+    -moz-transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none;
+    display: inline;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    font-size: 58px;
+    -webkit-box-shadow: 2px 2px 2px #000;
+    -moz-box-shadow: 2px 2px 2px #000;
+    box-shadow: 2px 2px 2px #000;
+    padding: 1rem;
+    color: white; }
+  kbd.keyseq { color: #555555; }
+  kbd:not(.keyseq) {
+    display: inline-block;
+    color: #222222;
+    font-size: 0.7em;
+    line-height: 1.4;
+    background-color: #F7F7F7;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset;
+    margin: -0.15em 0.15em 0 0.15em;
+    padding: 0.2em 0.6em;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  kbd kbd:first-child { margin-left: 0; }
+  kbd kbd:last-child { margin-right: 0; }
+</style>
+</body>
+</html>
