@@ -35,7 +35,7 @@
 :t15: Las Rutas
 :t16: Miscelánea
 
-image:ror-principal.jpg[RubyOnRails,100,float="right"]
+image:ror-principal.png[RubyOnRails,150,float="right"]
 
 == Tabla de contenidos
 
@@ -267,3 +267,7 @@ Son soluciones estándar a problemas comunes de diseño de software
 ----
 ActiveRecord abstrae del uso de SQL para evitar el acoplamiento con una base de datos concreta. Sin embargo, permite también ejecutar SQL diréctamente en el lenguaje nativo de la base de datos.
 ----
+
+== {contador}.{counter:contadort13} {t13x2}
+
+* La configuración de ActiveRecord permite
